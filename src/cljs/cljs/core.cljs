@@ -4429,7 +4429,8 @@ reduces them without incurring seq initialization"
               (let [init (.kv-reduce node f init)]
                 (if (reduced? init)
                   @init
-                  (recur (inc i) init)))))
+                  (recur (inc i) init)))
+              (recur (inc i) init)))
           init)))))
 
 (defn- hash-collision-node-find-index [arr cnt key]

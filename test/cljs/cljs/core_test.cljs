@@ -1791,6 +1791,9 @@
   (assert (= (reduce-kv conj [] (sorted-map :foo 1 :bar 2))
              [:bar 2 :foo 1]))
 
+  (assert (= (reduce-kv + 0 (apply hash-map (range 1000)))
+             (reduce + (range 1000))))
+
   ;; Test builtin implementations of IKVReduce
   (letfn [(kvr-test [data expect]
             (assert (= :reduced (reduce-kv (fn [_ _ _] (reduced :reduced))
